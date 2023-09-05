@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block title %}Library - Display Books{% endblock %}
+{% block content %}
+    <h3>Book Search Results</h3>
+    <form method="POST">
+        <input type="text" name="search_text" placeholder="Enter Book Name">
+        <button type="submit">Search</button>
+    </form>
+    
+    <h4>Found Books:</h4>
+    <ul>
+        {% for book in found_books %}
+            <li>{{ book }}</li>
+        {% endfor %}
+    </ul>
+
+    {% endblock %}

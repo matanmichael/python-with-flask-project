@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block title %}Library - Display Customers{% endblock %}
+{% block content %}
+    <h3>Customer Search Results</h3>
+    <form method="POST">
+        <input type="text" name="search_text" placeholder="Enter Customer Name">
+        <button type="submit">Search</button>
+    </form>
+    
+    <h4>Found Customers:</h4>
+    <ul>
+        {% for customer in found_customers %}
+            <li>{{ customer }}</li>
+        {% endfor %}
+    </ul>
+
+    {% endblock %}

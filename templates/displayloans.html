@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block title %}Library - Display Loans{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="center-align">Library - Display All Loans</h1>
+    <div class="row">
+        {% for loan in loans %}
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">{{ loan[1] }}</span>
+                    <p>{{ loan[2] }}</p>
+                    <p><strong>Customer ID:</strong> {{ loan[3] }}</p>
+                    <p><strong>Book ID:</strong> {{ loan[4] }}</p>
+                    <img src="https://picsum.photos/200/30{{loan[0]}}">
+                </div>
+                <div class="card-action">
+                    <form method="POST" action="{{ url_for('removeLoan') }}">
+                        <input type="hidden" name="book_id" value="{{ loan[0] }}">
+                        <button type="submit" class="btn red">Return Book</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Add Material-UI classes and icon -->
+  
+</div>
+{% endblock %}

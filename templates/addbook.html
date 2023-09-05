@@ -1,17 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Book</title>
-</head>
-<body>
-    <h1>Add a New Book</h1>
-    <form method="POST" action="/addbook">
-        <label>Name: <input type="text" name="name"></label><br>
-        <label>Author: <input type="text" name="author"></label><br>
-        <label>Year Published: <input type="text" name="yearPublished"></label><br>
-        <label>Type: <input type="text" name="type"></label><br>
-        <input type="submit" value="Add Book">
-    </form>
-    <a href="/">Back to Home</a>
-</body>
-</html>
+{% extends "index.html" %}
+
+{% block title %}Add Book{% endblock %}
+
+{% block heading %}Add a New Book{% endblock %}
+
+{% block content %}
+<div class="container center-align">
+<form method="POST" action="/addbook">
+    <div>
+        <label for="name"><h5>Name</h5></label>
+        <input type="text" name="name" id="name" required>
+    </div>
+    <div>
+        <label for="author"><h5>Author</h5></label>
+        <input style="width:auto" type="text" name="author" id="author" required>
+    </div>
+    <div>
+        <label for="yearPublished"><h5>Year Published</h5></label>
+        <input type="text" name="yearPublished" id="yearPublished" required>
+    </div>
+    <div>
+        
+        <label><h5>Type</h5></label><br>
+        <label>
+            <input  name="type" type="radio" value="1" />
+            <span>Type 1</span>
+        </label>
+        <label>
+            <input  name="type" type="radio" value="2" />
+            <span>Type 2</span>
+        </label>
+        <label>
+            <input  name="type" type="radio" value="3" />
+            <span>Type 3</span>
+        </label>
+    </div>
+    <button type="submit">Add Book</button>
+</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block title %}Add Loan{% endblock %}
+
+{% block heading %}Add a New Loan{% endblock %}
+
+{% block content %}
+<form method="POST" action="/addloan">
+    <div>
+        <label for="book_id">Book ID</label>
+        <input type="text" name="book_id" id="book_id" required>
+    </div>
+    <div>
+        <label for="cust_id">Customer ID</label>
+        <input type="text" name="cust_id" id="cust_id" required>
+    </div>
+    <button type="submit">Add Book</button>
+</form>
+
+{% endblock %}

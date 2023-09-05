@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block title %}Library - Display Customers{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="center-align">Library - Display Customers</h1>
+    <div class="row">
+        {% for customer in customers %}
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">{{ customer[1] }}</span>
+                    <p>{{ customer[2] }}</p>
+                    <p><strong>Age:</strong> {{ customer[3] }}</p>
+                    <img src="https://picsum.photos/200/30{{customer[0]}}">
+                </div>
+                <div class="card-action">
+                    <form method="POST" action="{{ url_for('removeCustomer') }}">
+                        <input type="hidden" name="customer_id" value="{{ customer[0] }}">
+                        <button type="submit" class="btn red">Remove Customer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

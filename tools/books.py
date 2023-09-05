@@ -1,5 +1,5 @@
 import sqlite3
-from flask import render_template, request
+from flask import redirect, render_template, request, url_for
 
 class Book:
     def __init__(self):
@@ -29,27 +29,26 @@ class Book:
             self.connection.commit()
         return render_template("/addbook.html")
     
+    
     def DisplayAllBooks(self):
         self.cursor.execute('SELECT * FROM books')
         all_books = self.cursor.fetchall()
-        print(all_books)
-        return render_template("displaybooks.html", books=all_books)
+        return all_books
 
-    def removeBook(self):
-        target_id=input("target id: ")
-        self.cursor.execute('DELETE FROM books WHERE id = ?', (target_id,))
-        self.connection.commit()
-        if self.cursor.rowcount > 0:
-            print(f"Book with ID {target_id} removed.")
-        else:
-            print(f"Book with ID {target_id} not found.")
+    def removeBook(self, book_id):
+        try:
+            self.cursor.execute('DELETE FROM books WHERE id = ?', (book_id,))
+            self.connection.commit()
+            return True
+        except Exception as e:
+            print(str(e))
+            return False
 
-    def bookFinder(self):
-        search_text = input("Enter Book Name: ")
+    def bookFinder(self,search_text):
         self.cursor.execute('SELECT * FROM books WHERE LOWER(title) LIKE ?', ('%' + search_text.lower() + '%',))
         found_books = self.cursor.fetchall()
-        for book in found_books:
-            return book
+        return found_books
+        
     def close(self):
         self.connection.close()
 

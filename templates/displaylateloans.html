@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+
+{% block title %}Library - Display Late Loans{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="center-align">Library - Display All Late Loans</h1>
+    <div class="row">
+        {% for late_loan in late_loans %}
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">{{ late_loan[1] }}</span>
+                    <p>{{ late_loan[2] }}</p>
+                    <p><strong>Customer ID:</strong> {{ late_loan[3] }}</p>
+                    <p><strong>Book ID:</strong> {{ late_loan[4] }}</p>
+                    <img src="https://picsum.photos/200/30{{late_loan[0]}}">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Add Material-UI classes and icon -->
+  
+</div>
+{% endblock %}
