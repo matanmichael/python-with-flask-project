@@ -3,11 +3,11 @@
 {% block title %}Library - Display Loans{% endblock %}
 
 {% block content %}
-<div class="container">
+<div>
     <h1 class="center-align">Library - Display All Loans</h1>
     <div class="row">
         {% for loan in loans %}
-        <div class="col s12 m4">
+        <div class="col s2 m2">
             <div class="card">
                 <div class="card-content">
                     <span class="card-title">{{ loan[1] }}</span>

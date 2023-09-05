@@ -5,6 +5,8 @@
 {% block heading %}Add a New Loan{% endblock %}
 
 {% block content %}
+<h3 style="text-align: center;">Add a new book</h3>
+<div class="container center-align">
 <form method="POST" action="/addloan">
     <div>
         <label for="book_id">Book ID</label>
@@ -16,5 +18,5 @@
     </div>
     <button type="submit">Add Book</button>
 </form>
-
+</div>
 {% endblock %}

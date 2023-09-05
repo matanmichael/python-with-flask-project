@@ -5,38 +5,38 @@
 {% block heading %}Add a New Book{% endblock %}
 
 {% block content %}
+<h3 style="text-align: center;">Add a new book</h3>
 <div class="container center-align">
-<form method="POST" action="/addbook">
-    <div>
-        <label for="name"><h5>Name</h5></label>
-        <input type="text" name="name" id="name" required>
-    </div>
-    <div>
-        <label for="author"><h5>Author</h5></label>
-        <input style="width:auto" type="text" name="author" id="author" required>
-    </div>
-    <div>
-        <label for="yearPublished"><h5>Year Published</h5></label>
-        <input type="text" name="yearPublished" id="yearPublished" required>
-    </div>
-    <div>
-        
-        <label><h5>Type</h5></label><br>
-        <label>
-            <input  name="type" type="radio" value="1" />
-            <span>Type 1</span>
-        </label>
-        <label>
-            <input  name="type" type="radio" value="2" />
-            <span>Type 2</span>
-        </label>
-        <label>
-            <input  name="type" type="radio" value="3" />
-            <span>Type 3</span>
-        </label>
-    </div>
-    <button type="submit">Add Book</button>
-</form>
+    <form method="POST" action="/addbook">
+        <div class="input-container">
+            <label for="name">Book Name</label>
+            <input class="styled-input" type="text" name="name" id="name" required>
+        </div>
+        <div class="input-container">
+            <label for="author">Author Name</label>
+            <input class="styled-input" type="text" name="author" id="author" required>
+        </div>
+        <div class="input-container">
+            <label for="yearPublished">Publish Year</label>
+            <input class="styled-input" type="text" name="yearPublished" id="yearPublished" required>
+        </div>
+        <div class="radio-container">
+            <label><h5>Type</h5></label><br>
+            <label>
+                <input name="type" type="radio" value="1" />
+                <span>Type 1</span>
+            </label>
+            <label>
+                <input  name="type" type="radio" value="2" />
+                <span>Type 2</span>
+            </label>
+            <label>
+                <input  name="type" type="radio" value="3" />
+                <span>Type 3</span>
+            </label>
+        </div>
+        <br>
+        <button class="styled-button" type="submit">Add Book</button>
+    </form>
 </div>
-
 {% endblock %}

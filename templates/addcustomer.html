@@ -6,6 +6,8 @@
 {% block heading %}Add a New Customer{% endblock %}
 
 {% block content %}
+<h3 style="text-align: center;">Add a new Customer</h3>
+<div class="container center-align">
 <form method="POST" action="/addcustomer">
     <!-- Form fields for name, city, and age -->
     <div>
@@ -22,4 +24,5 @@
     </div>
     <button type="submit">Add Customer</button>
 </form>
+</div>
 {% endblock %}

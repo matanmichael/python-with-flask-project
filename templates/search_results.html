@@ -1,17 +1,45 @@
 {% extends "index.html" %}
-{% block title %}Library - Display Books{% endblock %}
-{% block content %}
-    <h3>Book Search Results</h3>
-    <form method="POST">
-        <input type="text" name="search_text" placeholder="Enter Book Name">
-        <button type="submit">Search</button>
-    </form>
-    
-    <h4>Found Books:</h4>
-    <ul>
-        {% for book in found_books %}
-            <li>{{ book }}</li>
-        {% endfor %}
-    </ul>
 
-    {% endblock %}
+{% block title %}Library - Display Books{% endblock %}
+
+{% block content %}
+<div >
+    <div class="container">
+        <h3>Book Search Results</h3>
+        <form method="POST">
+            <div class="input-field">
+                <input type="text" name="search_text" id="search_text" placeholder="Enter Book Name">
+                <button class="btn waves-effect waves-light" type="submit">Search</button>
+                
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
+        <h4 style="text-align: center;">Found Books:</h4>
+        {% for book in found_books %}
+        <div class="col s2 m2">
+                <div class="card custom-card">
+                    <div class="card-image">
+                        <img class="book-image" src="https://picsum.photos/200/30{{book[0]% 10}}" />
+                    </div>
+                    <div class="card-content">
+                        <p>{{ book[1] }}</p>
+                        <p>{{ book[2] }}</p>
+                        <p><strong>Year:</strong> {{ book[3] }}</p>
+                        <p><strong>Type:</strong> {{ book[4] }}</p>
+                    </div>
+                    <div class="card-action">
+                        <form method="POST" action="{{ url_for('removeBook') }}">
+                            <input type="hidden" name="book_id" value="{{ book[0] }}" />
+                            <button type="submit" class="btn red waves-effect waves-light">
+                                <i class="material-icons left">delete</i> Remove Book
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

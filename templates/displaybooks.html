@@ -1,32 +1,31 @@
-{% extends "index.html" %}
-
-{% block title %}Library - Display Books{% endblock %}
-
-{% block content %}
-<div class="container">
-    <h1 class="center-align">Library - Display Books</h1>
-    <div class="row">
-        {% for book in books %}
-        <div class="col s12 m4">
-            <div class="card">
-                <div class="card-content custom-card-content">
-                    <span class="card-title">{{ book[1] }}</span>
-                    <p>{{ book[2] }}</p>
-                    <p><strong>Year:</strong> {{ book[3] }}</p>
-                    <p><strong>Type:</strong> {{ book[4] }}</p>
-                    <img class="book-image" src="https://picsum.photos/200/30{{book[0]% 10}}">
-                </div>
-                <div class="card-action">
-                    <form method="POST" action="{{ url_for('removeBook') }}">
-                        <input type="hidden" name="book_id" value="{{ book[0] }}">
-                        <button type="submit" class="btn red">Remove Book</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    <!-- Add Material-UI classes and icon -->
-  
+{% extends "index.html" %} {% block title %}Library - Display Books{% endblock
+%} {% block content %}
+<div>
+  <h1 class="center-align">Library - Display Books</h1>
+  <div class="row">
+    {% for book in books %}
+    <div class="col s2 m2">
+      <div class="card custom-card">
+          <div class="card-image">
+              <img class="book-image" src="https://picsum.photos/200/30{{book[0]% 10}}" />
+          </div>
+          <div class="card-content">
+              <p>{{ book[1] }}</p>
+              <p>{{ book[2] }}</p>
+              <p><strong>Year:</strong> {{ book[3] }}</p>
+              <p><strong>Type:</strong> {{ book[4] }}</p>
+          </div>
+          <div class="card-action">
+              <form method="POST" action="{{ url_for('removeBook') }}">
+                  <input type="hidden" name="book_id" value="{{ book[0] }}" />
+                  <button type="submit" class="btn red waves-effect waves-light">
+                      <i class="material-icons left">delete</i> Remove Book
+                  </button>
+              </form>
+          </div>
+      </div>
+  </div>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

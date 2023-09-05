@@ -1,17 +1,40 @@
 {% extends "index.html" %}
-{% block title %}Library - Display Customers{% endblock %}
-{% block content %}
-    <h3>Customer Search Results</h3>
-    <form method="POST">
-        <input type="text" name="search_text" placeholder="Enter Customer Name">
-        <button type="submit">Search</button>
-    </form>
-    
-    <h4>Found Customers:</h4>
-    <ul>
-        {% for customer in found_customers %}
-            <li>{{ customer }}</li>
-        {% endfor %}
-    </ul>
 
-    {% endblock %}
+{% block title %}Library - Display Customers{% endblock %}
+
+{% block content %}
+<div >
+    <div class="container">
+        <h3>Customer Search Results</h3>
+        <form method="POST">
+            <div class="input-field">
+                <input type="text" name="search_text" id="search_text" placeholder="Enter Customer Name">
+                <button class="btn waves-effect waves-light" type="submit">Search</button>
+                
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
+        <h4 style="text-align: center;">Found Customers:</h4>
+        {% for customer in found_customers %}
+        <div class="col s2 m2">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">{{ customer[1] }}</span>
+                    <p>{{ customer[2] }}</p>
+                    <p><strong>Age:</strong> {{ customer[3] }}</p>
+                    <img src="https://picsum.photos/200/30{{customer[0]}}">
+                </div>
+                <div class="card-action">
+                    <form method="POST" action="{{ url_for('removeCustomer') }}">
+                        <input type="hidden" name="customer_id" value="{{ customer[0] }}">
+                        <button type="submit" class="btn red">Remove Customer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
