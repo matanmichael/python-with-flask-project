@@ -11,8 +11,8 @@ SQLite
 Installation
 
 Clone the repository:
-git clone https://github.com/yourusername/book-library-management.git
-cd book-library-management
+git clone [https://github.com/yourusername/book-library-management.git](https://github.com/matanmichael/python-with-flask-project.git)
+cd python-with-flask-project.git
 
 Create a virtual environment (optional but recommended):
 python -m venv venv
