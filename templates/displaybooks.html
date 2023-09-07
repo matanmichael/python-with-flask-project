@@ -1,7 +1,10 @@
-{% extends "index.html" %} {% block title %}Library - Display Books{% endblock
-%} {% block content %}
+{% extends "index.html" %} 
+
+{% block title %}Library - Display Books{% endblock%} 
+
+{% block content %}
 <div>
-  <h1 class="center-align">Library - Display Books</h1>
+  <h3 class="center-align">Display Books</h3>
   <div class="row">
     {% for book in books %}
     <div class="col s2 m2">
@@ -10,13 +13,14 @@
               <img class="book-image" src="https://picsum.photos/200/30{{book[0]% 10}}" />
           </div>
           <div class="card-content">
-              <p>{{ book[1] }}</p>
-              <p>{{ book[2] }}</p>
-              <p><strong>Year:</strong> {{ book[3] }}</p>
+              <p><strong>Book ID:</strong> {{ book[0] }}</p>
+              <p><strong>Book Name:</strong> {{ book[1] }}</p>
+              <p><strong>Author:</strong> {{ book[2] }}</p>
+              <p><strong>Published Year:</strong> {{ book[3] }}</p>
               <p><strong>Type:</strong> {{ book[4] }}</p>
           </div>
           <div class="card-action">
-              <form method="POST" action="{{ url_for('removeBook') }}">
+              <form method="POST" action="/removebook">
                   <input type="hidden" name="book_id" value="{{ book[0] }}" />
                   <button type="submit" class="btn red waves-effect waves-light">
                       <i class="material-icons left">delete</i> Remove Book

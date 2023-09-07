@@ -5,7 +5,7 @@
 {% block heading %}Add a New Loan{% endblock %}
 
 {% block content %}
-<h3 style="text-align: center;">Add a new book</h3>
+<h3 style="text-align: center;">Loan a Book</h3>
 <div class="container center-align">
 <form method="POST" action="/addloan">
     <div>
@@ -18,5 +18,14 @@
     </div>
     <button type="submit">Add Book</button>
 </form>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flash-messages">
+      {% for message in messages %}
+        <li class="flash-message">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 </div>
 {% endblock %}

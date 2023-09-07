@@ -1,11 +1,12 @@
 {% extends "index.html" %}
 
-{% block title %}Library - Display Books{% endblock %}
+{% block title %}Display Books{% endblock %}
 
 {% block content %}
 <div >
+    <h3 style="text-align: center;">Book Search Results</h3>
     <div class="container">
-        <h3>Book Search Results</h3>
+        
         <form method="POST">
             <div class="input-field">
                 <input type="text" name="search_text" id="search_text" placeholder="Enter Book Name">

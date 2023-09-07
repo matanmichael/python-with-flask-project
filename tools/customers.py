@@ -33,14 +33,9 @@ class Customer:
         return all_customers
 
     def removeCustomer(self, customer_id):
-        try:
-            self.cur.execute('DELETE FROM customers WHERE id = ?', (customer_id,))
-            self.con.commit()
-            return True
-        except Exception as e:
-            print(str(e))
-            return False
-
+        self.cur.execute('DELETE FROM customers WHERE id = ?', (customer_id,))
+        self.con.commit()
+        
     def customerFinder(self,search_text):
         self.cur.execute('''SELECT * FROM customers WHERE LOWER(name) LIKE?''', ('%' + search_text.lower() + '%',))
         found_customers=self.cur.fetchall()

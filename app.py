@@ -13,14 +13,6 @@ app.secret_key = 'your_secret_key'  # Set a secret key for flash messages
 def home():
     return render_template('index.html')
 
-@app.route('/addbook', methods=['GET', 'POST'])
-def addBook():
-    if request.method == 'POST':
-        book_instance.addNewBook()
-        flash("Book added successfully", 'success')
-        return redirect(url_for('addBook'))  # Redirect to the add book page after adding
-    return render_template('addbook.html')
-
 @app.route('/books', methods=['GET'])
 def displayBooks():
     all_books = book_instance.DisplayAllBooks()
@@ -29,32 +21,31 @@ def displayBooks():
 @app.route('/removebook', methods=['POST'])
 def removeBook():
     book_id = request.form.get('book_id')
-    if book_id:
-        result = book_instance.removeBook(book_id)
-        if result:
-            flash("Book removed successfully", 'success')
-        else:
-            flash("Book not found or could not be removed", 'danger')
-    else:
-        flash("Please provide a valid book ID", 'danger')
+    book_instance.removeBook(book_id)
+    flash("Book removed successfully", 'success')
+    return render_template('displaybooks.html')
 
-    return redirect(url_for('displayBooks'))
-  
+@app.route('/addbook', methods=['GET', 'POST'])
+def addBook():
+    if request.method == 'POST':
+        book_instance.addNewBook()
+        flash("Book added successfully", 'success')       
+    return render_template('addbook.html')
+
 @app.route('/bookfinder', methods=['GET', 'POST'])
 def search_books():
-    found_books = []
     if request.method == 'POST':
         search_text = request.form['search_text']
         found_books = book_instance.bookFinder(search_text)
-    return render_template('search_results.html', found_books=found_books)
+        return render_template('search_results.html', found_books=found_books)
+    return render_template('search_results.html')
 
-# app.py
 @app.route('/addcustomer', methods=['GET', 'POST'])
 def addCustomer():
     if request.method == 'POST':
         customer_instance.addNewCustomer()
         flash("Customer added successfully", 'success')
-        return redirect(url_for('addCustomer'))  # Redirect to the add customer page after adding
+        return render_template('addcustomer.html')  # Redirect to the add customer page after adding
     return render_template('addcustomer.html')
 
 @app.route('/customers', methods=['GET'])
@@ -65,24 +56,17 @@ def displayCustomers():
 @app.route('/removecustomer', methods=['POST'])
 def removeCustomer():
     customer_id = request.form.get('customer_id')
-    if customer_id:
-        result = customer_instance.removeCustomer(customer_id)
-        if result:
-            flash("Customer removed successfully", 'success')
-        else:
-            flash("Customer not found or could not be removed", 'danger')
-    else:
-        flash("Please provide a valid customer ID", 'danger')
-
-    return redirect(url_for('displayCustomers'))
+    customer_instance.removeCustomer(customer_id)
+    flash("Customer removed successfully", 'success')
+    return render_template('displaycustomers.html')
 
 @app.route('/customerfinder', methods=['GET', 'POST'])
 def search_customers():
-    found_customers = []
     if request.method == 'POST':
         search_text = request.form['search_text']
         found_customers = customer_instance.customerFinder(search_text)
-    return render_template('search_customer.html', found_customers=found_customers)
+        return render_template('search_customer.html', found_customers=found_customers)
+    return render_template('search_customer.html')
 
 @app.route('/loans', methods=['GET'])
 def displayLoans():
@@ -93,8 +77,7 @@ def displayLoans():
 def addLoan():
     if request.method == 'POST':
         loan_instance.loan_book()
-        flash("Book added successfully", 'success')
-        return redirect(url_for('addLoan'))  # Redirect to the add book page after adding
+        return render_template('addloan.html')
     return render_template('addloan.html')
 
 @app.route('/removeloan', methods=['POST'])

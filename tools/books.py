@@ -1,5 +1,5 @@
 import sqlite3
-from flask import redirect, render_template, request, url_for
+from flask import request
 
 class Book:
     def __init__(self):
@@ -7,7 +7,7 @@ class Book:
         self.cursor = self.connection.cursor()
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS books (
-                id INTEGER PRIMARY KEY,
+                id INTEGER PRIMARY KEY UNIQUE,
                 title TEXT NOT NULL,
                 author TEXT NOT NULL,
                 year INTEGER NOT NULL,
@@ -17,33 +17,25 @@ class Book:
         self.connection.commit()
     
     def addNewBook(self):
-        if request.method=='POST':
-            Name=request.form.get('name')
-            Author =request.form.get('author')
-            YearPublished=request.form.get('yearPublished')
-            Type=request.form.get('type')
-            self.cursor.execute('''
-                INSERT INTO books ( title, author, year, type)
-                VALUES ( ?, ?, ?, ?)
-            ''', ( Name, Author, YearPublished, Type))
-            self.connection.commit()
-        return render_template("/addbook.html")
-    
-    
+        Name=request.form.get('name')
+        Author =request.form.get('author')
+        YearPublished=request.form.get('yearPublished')
+        Type=request.form.get('type')
+        self.cursor.execute('''
+                    INSERT INTO books ( title, author, year, type)
+                    VALUES ( ?, ?, ?, ?)
+                ''', ( Name, Author, YearPublished, Type))
+        self.connection.commit()
+            
     def DisplayAllBooks(self):
         self.cursor.execute('SELECT * FROM books')
         all_books = self.cursor.fetchall()
         return all_books
 
     def removeBook(self, book_id):
-        try:
-            self.cursor.execute('DELETE FROM books WHERE id = ?', (book_id,))
-            self.connection.commit()
-            return True
-        except Exception as e:
-            print(str(e))
-            return False
-
+        self.cursor.execute('DELETE FROM books WHERE id = ?', (book_id,))
+        self.connection.commit()
+        
     def bookFinder(self,search_text):
         self.cursor.execute('SELECT * FROM books WHERE LOWER(title) LIKE ?', ('%' + search_text.lower() + '%',))
         found_books = self.cursor.fetchall()
