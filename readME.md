@@ -1,5 +1,5 @@
-Book Library Management System
-This is a simple Python Flask application for managing a book library system with an SQLite database. The project includes a Data Access Layer (DAL), unit tests, and a web-based client application to interact with the library system.
+Book Library Management System.
+This is a simple Python Flask application for managing a book library system with an SQLite database. The project includes a Data Access Layer (DAL), unit tests, and a web-based client application that interacts with the library system.
 
 Prerequisites
 Before running the application, make sure you have the following prerequisites installed on your system:
