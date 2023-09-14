@@ -1,13 +1,13 @@
-{% extends "index.html" %}
+{% extends "displaybooks.html" %}
 
 {% block title %}Add Book{% endblock %}
 
 {% block heading %}Add a New Book{% endblock %}
 
-{% block content %}
+{% block inner_content %}
 <h3 style="text-align: center;">Add a new book</h3>
 <div class="container center-align">
-    <form method="POST" action="/addbook">
+    <form method="POST" action="/books/addbook">
         <div class="input-container">
             <label for="name">Book Name</label>
             <input class="styled-input" type="text" name="name" id="name" required>
@@ -35,8 +35,11 @@
                 <span>Type 3</span>
             </label>
         </div>
+        
         <br>
         <button class="styled-button" type="submit">Add Book</button>
+
+        
     </form>
 </div>
 {% endblock %}

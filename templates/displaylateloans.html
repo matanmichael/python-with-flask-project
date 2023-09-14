@@ -1,9 +1,10 @@
-{% extends "index.html" %}
+{% extends "displayloans.html" %}
 
 {% block title %}Library - Display Late Loans{% endblock %}
 
-{% block content %}
+{% block inner_content %}
 <div >
+    
     <h3 class="center-align">Display All Late Loans</h3>
     <div class="row">
         {% for late_loan in late_loans %}

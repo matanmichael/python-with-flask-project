@@ -3,15 +3,22 @@
 {% block title %}Library - Display Customers{% endblock %}
 
 {% block content %}
+<nav class="nav-wrapper" style="background-color: black;">
+    <ul id="nav-mobile" class="centered-nav">
+    <li><a href="/customers">Display all customers</a></li>
+    <li><a href="/customers/addcustomer">add a customer</a></li>
+    <li><a href="/customers/customerfinder">search a customer</a></li>
+    </ul>
+</nav>
 <div>
-    <h3 class="center-align">Display Customers</h3>
     <div class="row">
         {% for customer in customers %}
         <div class="col s2 m2">
             <div class="card">
                 <div class="card-content">
                     <span class="card-title">{{ customer[1] }}</span>
-                    <p>{{ customer[2] }}</p>
+                    <p><strong>Customer ID:</strong> {{ customer[0] }}</p>
+                    <p><strong>City:</strong> {{ customer[2] }}</p>
                     <p><strong>Age:</strong> {{ customer[3] }}</p>
                     <img src="https://picsum.photos/200/30{{customer[0]}}">
                 </div>
@@ -26,4 +33,5 @@
         {% endfor %}
     </div>
 </div>
+{% block inner_content %}{% endblock %}
 {% endblock %}

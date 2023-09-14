@@ -1,28 +1,22 @@
-<!-- addcustomer.html -->
-{% extends "index.html" %}
-
-{% block title %}Add New Customer{% endblock %}
-
-{% block heading %}Add a New Customer{% endblock %}
-
-{% block content %}
-<h3 style="text-align: center;">Add a new Customer</h3>
+{% extends "displaycustomers.html" %} {% block title %}Add New Customer{%
+endblock %} {% block heading %}Add a New Customer{% endblock %} {% block
+inner_content %}
+<h3 style="text-align: center">Add a new Customer</h3>
 <div class="container center-align">
-<form method="POST" action="/addcustomer">
-    <!-- Form fields for name, city, and age -->
+  <form method="POST" action="/customers/addcustomer">
     <div>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" required>
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" required />
     </div>
     <div>
-        <label for="city">City:</label>
-        <input type="text" name="city" id="city" required>
+      <label for="city">City:</label>
+      <input type="text" name="city" id="city" required />
     </div>
     <div>
-        <label for="age">Age:</label>
-        <input type="number" name="age" id="age" required>
+      <label for="age">Age:</label>
+      <input type="number" name="age" id="age" required />
     </div>
     <button type="submit">Add Customer</button>
-</form>
+  </form>
 </div>
 {% endblock %}

@@ -54,12 +54,7 @@ class Loan:
                 self.con.commit()
                 flash("Book successfully loaned.", 'success')
 
-    def return_book(self):
-        book_id =request.form.get('book_id')
-        self.cur.execute("SELECT * FROM loans WHERE BookID=? AND ReturnDate IS NOT NULL", (book_id,))
-        loan_record = self.cur.fetchone()
-        if not loan_record:
-            return
+    def return_book(self,book_id):
         self.cur.execute("DELETE FROM loans WHERE BookID=?", (book_id,))
         self.con.commit()
     

@@ -1,113 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Library{% endblock %}</title>
     <!-- Include Materialize CSS and icons from CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <!-- Custom CSS for centering navigation links -->
     <style>
-        .centered-nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        /* Media query for screens with a width of 992px or less (adjust breakpoint as needed) */
-        
-         /* Custom CSS class for card content */
-        .book-image {
+      .centered-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      /* Media query for screens with a width of 992px or less (adjust breakpoint as needed) */
+
+      /* Custom CSS class for card content */
+      .book-image {
         width: 100%; /* Set the width to 100% to fit within the card content */
         height: auto; /* Maintain aspect ratio while resizing */
-    }
+      }
       /* Custom CSS class for card content */
-        .custom-card-content {
-            height: 600px; /* Adjust the height as needed */
-            /* You can also add other styling as needed */
-        }
+      .custom-card-content {
+        height: 600px; /* Adjust the height as needed */
+        /* You can also add other styling as needed */
+      }
 
-    /* Style the image within the card content */
-        .custom-card-content img {
-            max-width: 100%; /* Ensure the image doesn't exceed the card content width */
-            max-height: 100%; /* Ensure the image doesn't exceed the card content height */
-            display: block; /* Remove any extra spacing around the image */
-            margin: 0 auto; /* Center the image horizontally within the card content */
-        }
-                
- .container {
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width:300px;
-}
+      /* Style the image within the card content */
+      .custom-card-content img {
+        max-width: 100%; /* Ensure the image doesn't exceed the card content width */
+        max-height: 100%; /* Ensure the image doesn't exceed the card content height */
+        display: block; /* Remove any extra spacing around the image */
+        margin: 0 auto; /* Center the image horizontally within the card content */
+      }
 
-.input-container {
-    margin-bottom: 20px;
-}
+      .container {
+        background-color: #f2f2f2;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 300px;
+      }
 
-.styled-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
+      .input-container {
+        margin-bottom: 20px;
+      }
 
-.radio-container {
-    margin-top: 10px;
-}
+      .styled-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
 
-.styled-button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
+      .radio-container {
+        margin-top: 10px;
+      }
 
-.styled-button:hover {
-    background-color: #0056b3;
-}
-.custom-card .card-content {
-    min-height: 180px; /* Adjust the height as needed */
-}
+      .styled-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .styled-button:hover {
+        background-color: #0056b3;
+      }
+      .custom-card .card-content {
+        min-height: 180px; /* Adjust the height as needed */
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="nav-wrapper">
-                <ul id="nav-mobile" class="centered-nav">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/books">Display all books</a></li>
-                    <li><a href="/addbook">Add a new book</a></li>
-                    <li><a href="/bookfinder">Find book by name</a></li>
-                    <li><a href="/addcustomer">Add a new customer</a></li>
-                    <li><a href="/customers">Display all customers</a></li>
-                    <li><a href="/customerfinder">Find customer by name</a></li>
-                    <li><a href="/loans">Display all loans</a></li>
-                    <li><a href="/addloan">Loan a book</a></li>
-                    <li><a href="/lateloans">Display all late loans</a></li>
-                </ul>
-            </div>
-        </nav>
+      <nav>
+        <div class="nav-wrapper">
+          <ul
+            id="nav-mobile"
+            class="centered-nav"
+            style="background-color: brown"
+          >
+            <li><a href="/">Home</a></li>
+            <li><a href="/books">Books</a></li>
+            <li><a href="/customers">Customers</a></li>
+            <li><a href="/loans">Loans</a></li>
+          </ul>
+        </div>
+      </nav>
     </header>
-    
+
     <main>
-        <!-- Content of the child templates will be inserted here -->
-        {% block content %}<h3 class="center-align">my python flask library project using sqlite3 as data base</h3>{% endblock %}
+      <!-- Content of the child templates will be inserted here -->
+      {% block content %}
+      <h3 class="center-align">
+        my python flask library project using sqlite3 as data base
+      </h3>
+      {% endblock %}
     </main>
-    
+
     <footer>
-        <!-- Footer content goes here -->
-        <p>&copy; {{ year }} Your Library</p>
+      <!-- Footer content goes here -->
+      <p>&copy; {{ year }} Your Library</p>
     </footer>
-    
+
     <!-- Include Materialize JavaScript from CDN -->
-</body>
+  </body>
 </html>
