@@ -31,7 +31,7 @@ class Book:
         self.cursor.execute('''SELECT * FROM books''')
         all_books = self.cursor.fetchall()
         return all_books
-    
+        
 
     def removeBook(self, book_id):
         self.cursor.execute('DELETE FROM books WHERE id = ?', (book_id,))

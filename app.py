@@ -19,7 +19,7 @@ def displayBooks():
     all_books = book_instance.DisplayAllBooks()
     return render_template("displaybooks.html", books=all_books)
 
-@app.route('/removebook', methods=['POST'])
+@app.route('/books/removebook', methods=['POST'])
 def removeBook():
     book_id = request.form.get('book_id')
     book_instance.removeBook(book_id)
@@ -38,8 +38,8 @@ def search_books():
     if request.method == 'POST':
         search_text = request.form['search_text']
         found_books = book_instance.bookFinder(search_text)
-        return render_template('search_results.html', found_books=found_books)
-    return render_template('search_results.html')
+        return render_template('searchbook.html', found_books=found_books)
+    return render_template('searchbook.html')
 
 @app.route('/customers', methods=['GET'])
 def displayCustomers():
@@ -66,8 +66,8 @@ def search_customers():
     if request.method == 'POST':
         search_text = request.form['search_text']
         found_customers = customer_instance.customerFinder(search_text)
-        return render_template('search_customer.html', found_customers=found_customers)
-    return render_template('search_customer.html')
+        return render_template('searchcustomer.html', found_customers=found_customers)
+    return render_template('searchcustomer.html')
 
 @app.route('/loans', methods=['GET'])
 def displayLoans():

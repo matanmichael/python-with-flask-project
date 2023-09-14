@@ -26,7 +26,7 @@
           <p><strong>Type:</strong> {{ book[4] }}</p>
         </div>
         <div class="card-action">
-          <form method="POST" action="/removebook">
+          <form method="POST" action="/books/removebook">
             <input type="hidden" name="book_id" value="{{ book[0] }}" />
             <button type="submit" class="btn red waves-effect waves-light">
               <i class="material-icons left">delete</i> Remove Book
