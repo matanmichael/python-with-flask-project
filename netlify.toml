@@ -1,0 +1,3 @@
+[build]
+  command = "gunicorn -c gunicorn_config.py app:app"
+  publish = "app/static"  # Path to your Flask app's static files
