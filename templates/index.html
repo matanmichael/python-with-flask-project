@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>{% block title %}Library{% endblock %}</title>
     <!-- Include Materialize CSS and icons from CDN -->
     <link
@@ -15,18 +16,35 @@
     />
     <!-- Custom CSS for centering navigation links -->
     <style>
+      
+      .container {
+        background-color: #f2f2f2;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 90%; /* Use a percentage width */
+        max-width: 600px; /* Set a maximum width to maintain readability */
+        margin: 0 auto; /* Center the container horizontally */
+      }
+              /* Media query for screens smaller than 768px (e.g., mobile) */
+        @media (max-width: 768px) {
+          h3.center-align {
+            font-size: 24px; /* Adjust the font size for smaller screens */
+          }
+        }
+
+
       .centered-nav {
         display: flex;
         align-items: center;
         justify-content: center;
       }
+      
       /* Media query for screens with a width of 992px or less (adjust breakpoint as needed) */
 
       /* Custom CSS class for card content */
-      .book-image {
-        width: 100%; /* Set the width to 100% to fit within the card content */
-        height: auto; /* Maintain aspect ratio while resizing */
-      }
+    
       /* Custom CSS class for card content */
       .custom-card-content {
         height: 600px; /* Adjust the height as needed */
@@ -42,8 +60,6 @@
       }
 
       .container {
-        display: flex;
-        flex-wrap: wrap;
         background-color: #f2f2f2;
         padding: 20px;
         border-radius: 5px;
@@ -84,17 +100,14 @@
       .custom-card .card-content {
         min-height: 180px; /* Adjust the height as needed */
       }
+      
     </style>
   </head>
   <body>
     <header>
       <nav>
         <div class="nav-wrapper">
-          <ul
-            id="nav-mobile"
-            class="centered-nav"
-            style="background-color: brown"
-          >
+          <ul id="nav-mobile" class="centered-nav">
             <li><a href="/">Home</a></li>
             <li><a href="/books">Books</a></li>
             <li><a href="/customers">Customers</a></li>

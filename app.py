@@ -95,4 +95,4 @@ def displayLateLoans():
     return render_template("displaylateloans.html", late_loans=all_late_loans)
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
